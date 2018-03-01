@@ -18,7 +18,6 @@ public class SubCategory {
 
     @NotBlank
     @Size(max = 128)
-
     private String name;
 
     @ManyToOne

@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Service
@@ -18,7 +17,7 @@ public class CategoryService {
     @Autowired
     private EntityManager em;
 
-    public Long createCategory(@NotNull String name){
+    public Long createCategory(String name){
         Category category = new Category();
         category.setName(name);
 

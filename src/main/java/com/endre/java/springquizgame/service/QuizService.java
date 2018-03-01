@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -57,30 +56,39 @@ public class QuizService {
     }
 
 
-    //TODO se på fasit (Burde ikke laste alle quizzer)
-    public List<Quiz> getRandomQuizzes(int n, long categoryId){
-        List<Quiz> allQuizzes = getQuizzes();
+    public List<Quiz> getRandomQuizzes(int n, long categoryId) {
 
-        allQuizzes = allQuizzes.stream()
-                .filter(q -> q.getSubCategory().getParent().getId().equals(categoryId))
-                .collect(Collectors.toList());
+        TypedQuery<Long> sizeQuery = em.createQuery(
+                "select count(q) from Quiz q where q.subCategory.parent.id=?1", Long.class);
+        sizeQuery.setParameter(1, categoryId);
+        long size = sizeQuery.getSingleResult();
 
-        if (allQuizzes.size() < n){
-            throw new IllegalArgumentException("Not that many Quizzes in the database");
+        if (n > size) {
+            throw new IllegalArgumentException("Cannot choose " + n + " unique quizzes out of the " + size + " existing");
         }
 
         Random random = new Random();
-        Set<Integer> chosenNumbers = new HashSet<>();
-        List<Quiz> quizzes = new ArrayList<>();
 
-        while (chosenNumbers.size() < n){
-            int k = random.nextInt(allQuizzes.size());
-            if (chosenNumbers.contains(k)){
+        List<Quiz> quizzes = new ArrayList<>();
+        Set<Integer> chosen = new HashSet<>();
+
+        while (chosen.size() < n) {
+
+            int k = random.nextInt((int) size);
+            if (chosen.contains(k)) {
                 continue;
             }
-            chosenNumbers.add(k);
-            quizzes.add(allQuizzes.get(k));
+            chosen.add(k);
+
+            TypedQuery<Quiz> query = em.createQuery(
+                    "select q from Quiz q where q.subCategory.parent.id=?1", Quiz.class);
+            query.setParameter(1, categoryId);
+            query.setMaxResults(1);
+            query.setFirstResult(k);
+
+            quizzes.add(query.getSingleResult());
         }
-        return quizzes;
+
+        return  quizzes;
     }
 }

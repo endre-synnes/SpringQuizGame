@@ -1,5 +1,6 @@
 package com.endre.java.springquizgame.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -15,9 +16,11 @@ public class Quiz {
     @ManyToOne @NotNull
     private SubCategory subCategory;
 
+    @NotBlank
     @NotNull @Size(max = 250) @Column(unique = true)
     private String question;
 
+    @NotBlank
     @NotNull @Size(max = 250)
     private String firstAnswer, secondAnswer, thirdAnswer, fourthAnswer;
 
