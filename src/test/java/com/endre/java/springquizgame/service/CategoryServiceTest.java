@@ -1,5 +1,6 @@
 package com.endre.java.springquizgame.service;
 
+import com.endre.java.springquizgame.Application;
 import com.endre.java.springquizgame.entity.Category;
 import com.endre.java.springquizgame.entity.SubCategory;
 import org.junit.Test;
@@ -8,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.faces.application.Application;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
