@@ -39,6 +39,9 @@ public class MatchPO extends PageObject{
         return getDriver().findElements(By.id("questionId")).size() > 0;
     }
 
+    public int getQuestionCounter(){
+        return getInteger("questionCounterId");
+    }
 
     public long getQuizId(){
         String id = getDriver().findElement(By.xpath("//*[@data-quizid]")).getAttribute("data-quizid");
