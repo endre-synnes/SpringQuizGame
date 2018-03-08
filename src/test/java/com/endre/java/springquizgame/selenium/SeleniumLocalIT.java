@@ -1,9 +1,9 @@
-package com.endre.java.springquizgame;
+package com.endre.java.springquizgame.selenium;
 
-import com.endre.java.springquizgame.po.IndexPO;
-import com.endre.java.springquizgame.po.ui.MatchPO;
-import com.endre.java.springquizgame.po.ui.ResultPO;
-import com.endre.java.springquizgame.selenium.SeleniumDriverHandler;
+import com.endre.java.springquizgame.Application;
+import com.endre.java.springquizgame.selenium.po.IndexPO;
+import com.endre.java.springquizgame.selenium.po.ui.MatchPO;
+import com.endre.java.springquizgame.selenium.po.ui.ResultPO;
 import com.endre.java.springquizgame.service.QuizService;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -97,5 +97,33 @@ public class SeleniumLocalIT {
         assertTrue(resultPO.haveLost());
         assertFalse(resultPO.haveWon());
 
+    }
+
+
+    @Test
+    public void testWinAMatch() {
+
+        MatchPO matchPO = home.startNewMatch();
+        String ctgId = matchPO.getCategoryIds().get(0);
+        matchPO.chooseCategory(ctgId);
+
+        ResultPO resultPO = null;
+
+        for (int i = 1; i <= 5; i++) {
+            assertTrue(matchPO.isQustionDisplayed());
+            assertEquals(i, matchPO.getQuestionCounter());
+
+            long quizId = matchPO.getQuizId();
+            int rightAnswer = quizService.getQuiz(quizId).getIndexOfCorrectAnswer();
+
+            resultPO = matchPO.answerQuestion(rightAnswer);
+
+            if(i != 5) {
+                assertNull(resultPO);
+            }
+        }
+
+        assertTrue(resultPO.haveWon());
+        assertFalse(resultPO.haveLost());
     }
 }
