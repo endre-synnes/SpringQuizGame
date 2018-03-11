@@ -38,7 +38,7 @@ public class SeleniumLocalIT {
     }
 
     @AfterClass
-    public void tearDown() throws Exception {
+    public static void tearDown() {
         if (driver != null){
             driver.close();
         }
