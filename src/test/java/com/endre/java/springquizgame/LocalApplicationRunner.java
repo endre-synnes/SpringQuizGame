@@ -2,7 +2,6 @@ package com.endre.java.springquizgame;
 
 import org.springframework.boot.SpringApplication;
 
-
 public class LocalApplicationRunner {
 
 	public static void main(String[] args) {

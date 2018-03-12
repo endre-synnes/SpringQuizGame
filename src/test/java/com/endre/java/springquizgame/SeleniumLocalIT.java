@@ -110,7 +110,7 @@ public class SeleniumLocalIT {
 
         ResultPO resultPO = null;
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 3; i++) {
             assertTrue(matchPO.isQustionDisplayed());
             assertEquals(i, matchPO.getQuestionCounter());
 
@@ -119,7 +119,7 @@ public class SeleniumLocalIT {
 
             resultPO = matchPO.answerQuestion(rightAnswer);
 
-            if(i != 5) {
+            if(i != 3) {
                 assertNull(resultPO);
             }
         }
