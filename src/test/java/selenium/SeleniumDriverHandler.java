@@ -1,4 +1,4 @@
-package com.endre.java.springquizgame.selenium;
+package selenium;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -30,7 +30,8 @@ public class SeleniumDriverHandler {
         if (!tryToSetGeckoIfExists(property, Paths.get(homeDir, executableName))) {
             //then check if on Windows
             if (!tryToSetGeckoIfExists(property, Paths.get(homeDir, executableName + ".exe"))) {
-               return false;
+                System.out.println("WARNING: Cannot locate the " + executableName + " in your home directory " + homeDir);
+                return false;
             }
         }
 
@@ -46,8 +47,8 @@ public class SeleniumDriverHandler {
             see https://sites.google.com/a/chromium.org/chromedriver/getting-started
          */
 
-        boolean OK = setupDriverExecutable("chromedriver", "webdriver.chrome.driver");
-        if(! OK){
+        boolean isOk = setupDriverExecutable("chromedriver", "webdriver.chrome.driver");
+        if(! isOk){
             return null;
         }
 

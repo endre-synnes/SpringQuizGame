@@ -1,7 +1,7 @@
-package com.endre.java.springquizgame.selenium.po;
+package com.endre.java.springquizgame.po;
 
-import com.endre.java.springquizgame.selenium.po.ui.MatchPO;
-import com.endre.java.springquizgame.selenium.PageObject;
+import com.endre.java.springquizgame.po.ui.MatchPO;
+import selenium.PageObject;
 import org.openqa.selenium.WebDriver;
 
 import static org.junit.Assert.assertTrue;

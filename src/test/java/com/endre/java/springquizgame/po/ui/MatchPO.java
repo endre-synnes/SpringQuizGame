@@ -1,6 +1,6 @@
-package com.endre.java.springquizgame.selenium.po.ui;
+package com.endre.java.springquizgame.po.ui;
 
-import com.endre.java.springquizgame.selenium.PageObject;
+import selenium.PageObject;
 import org.openqa.selenium.By;
 
 import java.util.List;

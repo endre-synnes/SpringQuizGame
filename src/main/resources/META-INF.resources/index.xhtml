@@ -1,21 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      >
-
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
 
 <ui:composition template="/layout.xhtml">
+
     <ui:define name="title">
         Quiz Game
     </ui:define>
+
 
     <ui:define name="content">
 
         <h2>Quiz Game</h2>
 
-        <h:form>
+
+        <h:form prependId="false">
             <h:commandButton value="New Match" action="#{matchController.newMatch}" class="gameBtn" id="newMatchBtnId"/>
         </h:form>
 

@@ -1,9 +1,9 @@
-package com.endre.java.springquizgame.selenium;
+package com.endre.java.springquizgame;
 
-import com.endre.java.springquizgame.Application;
-import com.endre.java.springquizgame.selenium.po.IndexPO;
-import com.endre.java.springquizgame.selenium.po.ui.MatchPO;
-import com.endre.java.springquizgame.selenium.po.ui.ResultPO;
+import selenium.SeleniumDriverHandler;
+import com.endre.java.springquizgame.po.IndexPO;
+import com.endre.java.springquizgame.po.ui.MatchPO;
+import com.endre.java.springquizgame.po.ui.ResultPO;
 import com.endre.java.springquizgame.service.QuizService;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -48,7 +48,7 @@ public class SeleniumLocalIT {
     private IndexPO home;
 
     @Before
-    public void setUp() {
+    public void initTest() {
         driver.manage().deleteAllCookies();
 
         home = new IndexPO(driver, "localhost", port);

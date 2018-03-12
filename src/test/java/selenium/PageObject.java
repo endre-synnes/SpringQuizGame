@@ -1,4 +1,4 @@
-package com.endre.java.springquizgame.selenium;
+package selenium;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
