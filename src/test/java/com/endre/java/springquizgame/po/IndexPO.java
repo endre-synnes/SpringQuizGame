@@ -12,6 +12,10 @@ public class IndexPO extends PageObject {
         super(driver, host, port);
     }
 
+    public IndexPO(LayoutPO other) {
+        super(other);
+    }
+
     public void toStartPage(){
         getDriver().get(host + ":" + port);
     }
