@@ -3,6 +3,7 @@ package com.endre.java.springquizgame.controller;
 import com.endre.java.springquizgame.entity.Category;
 import com.endre.java.springquizgame.entity.Quiz;
 import com.endre.java.springquizgame.service.CategoryService;
+import com.endre.java.springquizgame.service.MatchStatsService;
 import com.endre.java.springquizgame.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,10 +19,14 @@ public class MatchController implements Serializable {
     @Autowired
     private CategoryService categoryService;
 
-
     @Autowired
     private QuizService quizService;
 
+    @Autowired
+    private MatchStatsService statsService;
+
+    @Autowired
+    private UserInfoController infoController;
 
     private final int NUMBER_QUIZZES = 3;
 
@@ -37,6 +42,13 @@ public class MatchController implements Serializable {
 
 
     public String newMatch(){
+
+        String username = infoController.getUserName();
+
+        if (gameIsOn){
+            statsService.reportDefeat(username);
+        }
+
         gameIsOn = true;
 
         selectedCategoryId = null;
@@ -67,15 +79,20 @@ public class MatchController implements Serializable {
     }
 
     public String answerQuiz(int index){
+
+        String username = infoController.getUserName();
+
         Quiz quiz = getCurrentQuiz();
         if (index == quiz.getIndexOfCorrectAnswer()){
             counter++;
             if (counter == NUMBER_QUIZZES){
                 gameIsOn = false;
+                statsService.reportVictory(username);
                 return "result.jsf?victory=true&faces-redirect=true";
             }
         } else {
             gameIsOn = false;
+            statsService.reportDefeat(username);
             return "result.jsf?defeat=true&faces-redirect=true";
         }
 

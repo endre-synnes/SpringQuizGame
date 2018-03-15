@@ -15,10 +15,15 @@ public class DefaultDataInitializerService {
     
     @Autowired
     private QuizService quizService;
-    
+
+    @Autowired
+    private UserService userService;
     
     @PostConstruct
     public void initialize(){
+
+        attempt(() -> userService.createUser("foo", "123"));
+
         Long ctgC = attempt(() -> categoryService.createCategory("Cars"));
         Long ctgH = attempt(() -> categoryService.createCategory("History"));
 
