@@ -1,8 +1,6 @@
 package com.endre.java.springquizgame.service;
 
-import com.endre.java.springquizgame.entity.Category;
-import com.endre.java.springquizgame.entity.Quiz;
-import com.endre.java.springquizgame.entity.SubCategory;
+import com.endre.java.springquizgame.entity.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,7 +17,11 @@ public class ResetService {
     private EntityManager em;
 
     public void resetDatabase(){
+        Query query = em.createNativeQuery("delete from user_roles");
+        query.executeUpdate();
 
+        deleteEntities(MatchStats.class);
+        deleteEntities(User.class);
         deleteEntities(Quiz.class);
         deleteEntities(SubCategory.class);
         deleteEntities(Category.class);

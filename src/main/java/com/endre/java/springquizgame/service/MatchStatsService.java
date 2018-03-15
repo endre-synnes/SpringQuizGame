@@ -37,9 +37,10 @@ public class MatchStatsService {
         TypedQuery<MatchStats> query = em.createQuery(
                 "select m from MatchStats m where m.user.username=?1",
                 MatchStats.class);
+        query.setParameter(1, username);
 
         List<MatchStats> results = query.getResultList();
-        if (results.isEmpty()){
+        if (!results.isEmpty()){
             return results.get(0);
         }
 
