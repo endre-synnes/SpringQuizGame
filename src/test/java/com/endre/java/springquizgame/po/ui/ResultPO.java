@@ -1,9 +1,10 @@
 package com.endre.java.springquizgame.po.ui;
 
+import com.endre.java.springquizgame.po.LayoutPO;
 import selenium.PageObject;
 import org.openqa.selenium.By;
 
-public class ResultPO extends PageObject {
+public class ResultPO extends LayoutPO {
     public ResultPO(PageObject other) {
         super(other);
     }

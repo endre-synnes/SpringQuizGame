@@ -1,21 +1,34 @@
 package com.endre.java.springquizgame.po;
 
-import org.openqa.selenium.WebDriver;
 import selenium.PageObject;
 
-public class SignUpPO extends PageObject{
+public class SignUpPO extends LayoutPO{
 
-
-    public SignUpPO(WebDriver driver, String host, int port) {
-        super(driver, host, port);
-    }
 
     public SignUpPO(PageObject other) {
         super(other);
     }
 
+    @Override
     public boolean isOnPage() {
-
-
+        return getDriver().getTitle().contains("Sign Up");
     }
+
+
+    public IndexPO createUser(String userName, String password){
+
+        setText("username", userName);
+        setText("password", password);
+        clickAndWait("submit");
+
+
+        IndexPO po = new IndexPO(this);
+        if (po.isOnPage()){
+            return po;
+        }
+
+        return null;
+    }
+
+
 }

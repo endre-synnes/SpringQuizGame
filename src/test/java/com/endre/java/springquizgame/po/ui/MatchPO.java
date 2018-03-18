@@ -1,5 +1,6 @@
 package com.endre.java.springquizgame.po.ui;
 
+import com.endre.java.springquizgame.po.LayoutPO;
 import selenium.PageObject;
 import org.openqa.selenium.By;
 
@@ -8,7 +9,7 @@ import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertTrue;
 
-public class MatchPO extends PageObject{
+public class MatchPO extends LayoutPO{
 
     public MatchPO(PageObject other) {
         super(other);
