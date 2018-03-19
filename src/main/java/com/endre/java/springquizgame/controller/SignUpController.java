@@ -38,7 +38,8 @@ public class SignUpController {
             //nothing to do
         }
 
-        if (registered){
+
+        if(registered){
 
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
             UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(
@@ -48,7 +49,7 @@ public class SignUpController {
 
             authenticationManager.authenticate(token);
 
-            if (token.isAuthenticated()){
+            if (token.isAuthenticated()) {
                 SecurityContextHolder.getContext().setAuthentication(token);
             }
 

@@ -7,7 +7,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Set;
 
 @Entity
-@Table(name = "USERS")
+@Table(name="USERS")
 public class User {
 
     @Id
@@ -25,7 +25,6 @@ public class User {
 
     public User() {
     }
-
 
     public String getUsername() {
         return username;

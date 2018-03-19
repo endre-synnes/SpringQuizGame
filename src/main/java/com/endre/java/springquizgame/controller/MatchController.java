@@ -83,9 +83,9 @@ public class MatchController implements Serializable {
         String username = infoController.getUserName();
 
         Quiz quiz = getCurrentQuiz();
-        if (index == quiz.getIndexOfCorrectAnswer()){
+        if(index == quiz.getIndexOfCorrectAnswer()){
             counter++;
-            if (counter == NUMBER_QUIZZES){
+            if(counter == NUMBER_QUIZZES){
                 gameIsOn = false;
                 statsService.reportVictory(username);
                 return "result.jsf?victory=true&faces-redirect=true";

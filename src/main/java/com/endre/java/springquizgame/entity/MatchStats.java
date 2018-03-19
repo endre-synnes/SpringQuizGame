@@ -12,23 +12,14 @@ public class MatchStats {
     @GeneratedValue
     private Long id;
 
-    @OneToOne
-    @NotNull
+    @OneToOne @NotNull
     private User user;
 
     @Min(0) @NotNull
-    private Integer victories = 0;
+    private Integer victories = 0 ;
 
     @Min(0) @NotNull
     private Integer defeats = 0;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public User getUser() {
         return user;
@@ -52,5 +43,13 @@ public class MatchStats {
 
     public void setDefeats(Integer defeats) {
         this.defeats = defeats;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

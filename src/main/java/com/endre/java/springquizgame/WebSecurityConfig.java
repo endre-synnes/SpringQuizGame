@@ -1,6 +1,5 @@
 package com.endre.java.springquizgame;
 
-import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,13 +10,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.sql.DataSource;
+
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-    //TODO sjekke om denne importerer riktig
     @Autowired
     private DataSource dataSource;
 
@@ -27,11 +26,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Bean
     @Override
     public UserDetailsService userDetailsServiceBean() throws Exception{
-       return super.userDetailsServiceBean();
+        return super.userDetailsServiceBean();
     }
 
+
     @Override
-    protected void configure(HttpSecurity http){
+    protected void configure(HttpSecurity http) {
         try {
             http.csrf().disable();
             http.authorizeRequests()

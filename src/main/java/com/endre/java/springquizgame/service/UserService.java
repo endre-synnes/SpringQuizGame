@@ -14,18 +14,18 @@ import java.util.Collections;
 @Transactional
 public class UserService {
 
-
     @Autowired
     private EntityManager em;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public boolean createUser(String username, String password){
+
+    public boolean createUser(String username, String password) {
 
         String hashedPassword = passwordEncoder.encode(password);
 
-        if (em.find(User.class, username) != null){
+        if (em.find(User.class, username) != null) {
             return false;
         }
 
@@ -35,7 +35,9 @@ public class UserService {
         user.setRoles(Collections.singleton("USER"));
         user.setEnabled(true);
 
+        em.persist(user);
+
         return true;
     }
-
 }
+
