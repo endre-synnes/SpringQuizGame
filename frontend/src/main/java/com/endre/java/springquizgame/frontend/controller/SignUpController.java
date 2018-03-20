@@ -25,6 +25,7 @@ public class SignUpController {
     private UserDetailsService userDetailsService;
 
 
+
     private String username;
 
     private String password;
