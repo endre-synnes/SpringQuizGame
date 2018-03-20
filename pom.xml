@@ -3,10 +3,16 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.endre.java</groupId>
-	<artifactId>springquizgame</artifactId>
+	<groupId>com.com.endre.java</groupId>
+	<artifactId>com.endre.java.springquizgame</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>pom</packaging>
+
+	<modules>
+		<module>report</module>
+		<module>backend</module>
+		<module>frontend</module>
+	</modules>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -16,12 +22,12 @@
 		<version.springboot>1.5.4.RELEASE</version.springboot>
 		<joinfaces.version>2.4.1</joinfaces.version>
 		<version.h2>1.4.194</version.h2>
+		<version.testcontainers>1.6.0</version.testcontainers>
 		<version.selenium>3.9.0</version.selenium>
 		<version.jacoco>0.7.9</version.jacoco>
 	</properties>
 
-	<name>spring</name>
-	<description>QuizGame Springboot Application</description>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -31,97 +37,36 @@
 				<scope>import</scope>
 				<type>pom</type>
 			</dependency>
+			<dependency>
+				<groupId>org.joinfaces</groupId>
+				<artifactId>jsf-spring-boot-starter</artifactId>
+				<version>${joinfaces.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.postgresql</groupId>
+				<artifactId>postgresql</artifactId>
+				<version>42.1.4</version>
+			</dependency>
+			<dependency>
+				<groupId>com.h2database</groupId>
+				<artifactId>h2</artifactId>
+				<version>${version.h2}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.12</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<dependencies>
-		<dependency>
-			<groupId>org.joinfaces</groupId>
-			<artifactId>jsf-spring-boot-starter</artifactId>
-			<version>${joinfaces.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
-		</dependency>
-
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${version.h2}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<version>${version.selenium}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-api</artifactId>
-			<version>${version.selenium}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-chrome-driver</artifactId>
-			<version>${version.selenium}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-remote-driver</artifactId>
-			<version>${version.selenium}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-support</artifactId>
-			<version>${version.selenium}</version>
-			<scope>test</scope>
-		</dependency>
-	</dependencies>
-
-
 
 	<build>
-
 		<plugins>
 			<plugin>
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-			</plugin>
-			<plugin>
-				<groupId>org.owasp</groupId>
-				<artifactId>dependency-check-maven</artifactId>
 			</plugin>
 		</plugins>
 
@@ -136,39 +81,6 @@
 						<source>${version.java}</source>
 						<target>${version.java}</target>
 					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>${version.jacoco}</version>
-					<executions>
-						<execution>
-							<id>default-prepare-agent</id>
-							<goals>
-								<goal>prepare-agent</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>default-report</id>
-							<phase>prepare-package</phase>
-							<goals>
-								<goal>report</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>default-prepare-agent-integration</id>
-							<phase>package</phase>
-							<goals>
-								<goal>prepare-agent-integration</goal>
-							</goals>
-						</execution>
-						<execution>
-							<id>default-report-integration</id>
-							<goals>
-								<goal>report-integration</goal>
-							</goals>
-						</execution>
-					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -199,13 +111,34 @@
 					</executions>
 				</plugin>
 				<plugin>
-					<groupId>org.owasp</groupId>
-					<artifactId>dependency-check-maven</artifactId>
-					<version>3.1.1</version>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>${version.jacoco}</version>
 					<executions>
 						<execution>
+							<id>default-prepare-agent</id>
 							<goals>
-								<goal>check</goal>
+								<goal>prepare-agent</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-report</id>
+							<phase>prepare-package</phase>
+							<goals>
+								<goal>report</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-prepare-agent-integration</id>
+							<phase>package</phase>
+							<goals>
+								<goal>prepare-agent-integration</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>default-report-integration</id>
+							<goals>
+								<goal>report-integration</goal>
 							</goals>
 						</execution>
 					</executions>
