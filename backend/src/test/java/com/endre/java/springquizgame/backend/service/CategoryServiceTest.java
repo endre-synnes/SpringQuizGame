@@ -1,8 +1,8 @@
 package com.endre.java.springquizgame.backend.service;
 
-import com.endre.java.springquizgame.Application;
-import com.endre.java.springquizgame.entity.Category;
-import com.endre.java.springquizgame.entity.SubCategory;
+import com.endre.java.springquizgame.backend.StubApplication;
+import com.endre.java.springquizgame.backend.entity.Category;
+import com.endre.java.springquizgame.backend.entity.SubCategory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class,
+@SpringBootTest(classes = StubApplication.class,
     webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class CategoryServiceTest extends ServiceTestBase{
 

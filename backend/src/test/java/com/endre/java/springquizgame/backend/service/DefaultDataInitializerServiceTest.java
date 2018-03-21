@@ -1,6 +1,6 @@
 package com.endre.java.springquizgame.backend.service;
 
-import com.endre.java.springquizgame.Application;
+import com.endre.java.springquizgame.backend.StubApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import static org.springframework.test.annotation.DirtiesContext.ClassMode.BEFOR
 
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class,
+@SpringBootTest(classes = StubApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 
 @DirtiesContext(classMode = BEFORE_CLASS)

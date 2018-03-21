@@ -1,7 +1,7 @@
 package com.endre.java.springquizgame.frontend.controller;
 
-import com.endre.java.springquizgame.entity.MatchStats;
-import com.endre.java.springquizgame.service.MatchStatsService;
+import com.endre.java.springquizgame.backend.entity.MatchStats;
+import com.endre.java.springquizgame.backend.service.MatchStatsService;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 

@@ -1,7 +1,7 @@
 package com.endre.java.springquizgame.backend.service;
 
-import com.endre.java.springquizgame.Application;
-import com.endre.java.springquizgame.entity.MatchStats;
+import com.endre.java.springquizgame.backend.StubApplication;
+import com.endre.java.springquizgame.backend.entity.MatchStats;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class,
+@SpringBootTest(classes = StubApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class MatchStatsServiceTest extends ServiceTestBase{
 

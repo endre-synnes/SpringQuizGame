@@ -1,5 +1,6 @@
 package com.endre.java.springquizgame.backend.service;
 
+import com.endre.java.springquizgame.backend.entity.*;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

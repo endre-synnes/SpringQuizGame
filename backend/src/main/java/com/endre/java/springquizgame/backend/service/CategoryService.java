@@ -1,7 +1,7 @@
 package com.endre.java.springquizgame.backend.service;
 
-import com.endre.java.springquizgame.entity.Category;
-import com.endre.java.springquizgame.entity.SubCategory;
+import com.endre.java.springquizgame.backend.entity.Category;
+import com.endre.java.springquizgame.backend.entity.SubCategory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

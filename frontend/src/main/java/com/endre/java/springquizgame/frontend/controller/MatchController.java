@@ -1,10 +1,10 @@
 package com.endre.java.springquizgame.frontend.controller;
 
-import com.endre.java.springquizgame.entity.Category;
-import com.endre.java.springquizgame.entity.Quiz;
-import com.endre.java.springquizgame.service.CategoryService;
-import com.endre.java.springquizgame.service.MatchStatsService;
-import com.endre.java.springquizgame.service.QuizService;
+import com.endre.java.springquizgame.backend.entity.Category;
+import com.endre.java.springquizgame.backend.entity.Quiz;
+import com.endre.java.springquizgame.backend.service.CategoryService;
+import com.endre.java.springquizgame.backend.service.MatchStatsService;
+import com.endre.java.springquizgame.backend.service.QuizService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.faces.bean.SessionScoped;

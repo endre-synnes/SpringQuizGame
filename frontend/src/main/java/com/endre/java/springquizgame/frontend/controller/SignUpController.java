@@ -1,6 +1,6 @@
 package com.endre.java.springquizgame.frontend.controller;
 
-import com.endre.java.springquizgame.service.UserService;
+import com.endre.java.springquizgame.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

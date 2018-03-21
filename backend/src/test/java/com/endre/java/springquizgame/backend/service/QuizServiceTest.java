@@ -1,7 +1,7 @@
 package com.endre.java.springquizgame.backend.service;
 
-import com.endre.java.springquizgame.Application;
-import com.endre.java.springquizgame.entity.Quiz;
+import com.endre.java.springquizgame.backend.StubApplication;
+import com.endre.java.springquizgame.backend.entity.Quiz;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = Application.class,
+@SpringBootTest(classes = StubApplication.class,
         webEnvironment = SpringBootTest.WebEnvironment.NONE)
 public class QuizServiceTest extends ServiceTestBase{
 

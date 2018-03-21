@@ -1,6 +1,6 @@
 package com.endre.java.springquizgame.backend.service;
 
-import com.endre.java.springquizgame.entity.User;
+import com.endre.java.springquizgame.backend.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
