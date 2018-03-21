@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.com.endre.java</groupId>
-	<artifactId>com.endre.java.springquizgame</artifactId>
+	<groupId>com.endre.java</groupId>
+	<artifactId>springquizgame</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 

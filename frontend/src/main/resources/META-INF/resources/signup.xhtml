@@ -5,24 +5,24 @@
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 >
 
-<ui:composition template="/layout.xhtml">
+<ui:composition template="/META-INF/resources/layout.xhtml">
 
     <ui:define name="title">
-        Log In
+        Sign Up
     </ui:define>
 
     <ui:define name="content">
         <h:form prependId="false">
-            <h:outputLabel value="Login Failed: user and/or password are wrong."
+            <h:outputLabel value="User and/or password are wrong."
                            rendered="${!empty param['error']}"/>
 
             <div>
                 <h:outputText value="Username: "/>
-                <h:inputText id="username" class="login"/><br/>
+                <h:inputText id="username" value="#{signUpController.username}" class="login"/><br/>
                 <h:outputText value="Password: "/>
-                <h:inputSecret id="password" class="login"/><br/>
+                <h:inputSecret id="password" value="#{signUpController.password}" class="login"/><br/>
 
-                <h:commandButton id="submit" value="Log In" class="gameBtn"/>
+                <h:commandButton id="submit" value="Sign Up" action="#{signUpController.signUpUser}" class="gameBtn"/>
             </div>
 
         </h:form>
