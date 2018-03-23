@@ -2,18 +2,18 @@ package com.endre.java.springquizgame.frontend.controller;
 
 import com.endre.java.springquizgame.backend.entity.MatchStats;
 import com.endre.java.springquizgame.backend.service.MatchStatsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
 @RequestScoped
 public class UserInfoController {
 
-    @Inject
+    @Autowired
     private MatchStatsService matchStatsService;
 
     public String getUserName(){
